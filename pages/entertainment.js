@@ -33,7 +33,7 @@ function EntertainmentPage({ articles }) {
       </Head>
       <main className="px-6 py-4 bg-slate-100">
         <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-          {articles.map((article, index) => (
+          {articles && articles.map((article, index) => (
               <ArticleCard article={article} key={index} />
           ))}
         </ul>
