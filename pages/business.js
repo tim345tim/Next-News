@@ -3,8 +3,14 @@ import ArticleCard from '@/components/ArticleCard';
 
 export async function getStaticProps() {
   const articles = await getArticles();
+  // return { 
+  //   props: { articles },
+  //   revalidate: 86400,
+  // };
   return { 
-    props: { articles },
+    props: { 
+      articles: JSON.parse(JSON.stringify(articles))
+     },
     revalidate: 86400,
   };
 }
