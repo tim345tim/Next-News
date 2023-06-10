@@ -24,7 +24,8 @@ export async function getArticles() {
   const articles = await responseJSON["data"];
   
   // const articles = await (response.json()["data"]);
-  return articles.map(stripArticle);
+  // return articles.map(stripArticle);
+  return articles;
 }
 
 function HomePage({ articles }) {

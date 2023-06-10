@@ -22,7 +22,8 @@ export async function getArticles() {
   const response = await fetch(`http://api.mediastack.com/v1/news?access_key=${api_key}&limit=20&languages=en&categories=technology`);
   const responseJSON = await response.json();
   const articles = await responseJSON["data"];
-  return articles.map(stripArticle);
+  // return articles.map(stripArticle);
+  return articles;
 }
 
 function TechnologyPage({ articles }) {
