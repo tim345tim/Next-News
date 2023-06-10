@@ -90,17 +90,17 @@ export async function getStaticProps() {
   const api_key = process.env.API_KEY;
   const response = await fetch(`http://api.mediastack.com/v1/news?access_key=${api_key}&limit=20&languages=en&categories=general`);
   const articles = await response.json();
-
+  
   return { 
     props: { 
-      articles: articles["data"] 
+      articles: articles["data"] ?? null
     },
     revalidate: 86400,
   };
 }
 
 function HomePage({ articles }) {
-  // console.log(articles);
+  
   return (
     <>
       <Head>
