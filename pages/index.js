@@ -48,17 +48,53 @@
 
 // export default HomePage;
 
+// import Head from 'next/head';
+// import ArticleCard from '@/components/ArticleCard';
+
+// export async function getStaticProps() {
+//   const api_key = process.env.API_KEY;
+//   const response = await fetch(`http://api.mediastack.com/v1/news?access_key=${api_key}&limit=20&languages=en&categories=general`);
+//   const responseJSON = await response.json();
+//   const articles = await responseJSON["data"];
+
+//   return { 
+//     props: { articles },
+//     revalidate: 86400,
+//   };
+// }
+
+// function HomePage({ articles }) {
+//   // console.log(articles);
+//   return (
+//     <>
+//       <Head>
+//         <title>News!</title>
+//       </Head>
+//       <main className="px-6 py-4 bg-slate-100">
+//         <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+//           {articles && articles.map((article, index) => (
+//               <ArticleCard article={article} key={index} />
+//           ))}
+//         </ul>
+//       </main>
+//     </>
+//   );
+// }
+
+// export default HomePage;
+
 import Head from 'next/head';
 import ArticleCard from '@/components/ArticleCard';
 
 export async function getStaticProps() {
   const api_key = process.env.API_KEY;
   const response = await fetch(`http://api.mediastack.com/v1/news?access_key=${api_key}&limit=20&languages=en&categories=general`);
-  const responseJSON = await response.json();
-  const articles = await responseJSON["data"];
+  const articles = await response.json();
 
   return { 
-    props: { articles },
+    props: { 
+      articles: articles["data"] 
+    },
     revalidate: 86400,
   };
 }

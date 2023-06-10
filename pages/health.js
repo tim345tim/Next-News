@@ -51,10 +51,12 @@ import ArticleCard from '@/components/ArticleCard';
 export async function getStaticProps() {
   const api_key = process.env.API_KEY;
   const response = await fetch(`http://api.mediastack.com/v1/news?access_key=${api_key}&limit=20&languages=en&categories=health`);
-  const responseJSON = await response.json();
-  const articles = await responseJSON["data"];
+  const articles = await response.json();
+  
   return { 
-    props: { articles },
+    props: { 
+      articles: articles["data"]
+    },
     revalidate: 86400,
   };
 }
