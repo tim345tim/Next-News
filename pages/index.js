@@ -21,7 +21,9 @@ export async function getArticles() {
   const api_key = process.env.API_KEY;
   const response = await fetch(`http://api.mediastack.com/v1/news?access_key=${api_key}&limit=20&languages=en&categories=general`);
   const responseJSON = await response.json();
-  const articles = responseJSON["data"];
+  const articles = await responseJSON["data"];
+  
+  // const articles = await (response.json()["data"]);
   return articles.map(stripArticle);
 }
 
